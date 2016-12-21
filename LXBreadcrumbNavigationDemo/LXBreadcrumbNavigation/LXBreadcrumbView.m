@@ -9,18 +9,21 @@
 #import "LXBreadcrumbView.h"
 
 #define kScreenWidth [UIScreen mainScreen].bounds.size.width
+#define kScrollViewHeight 44 // 内容滚动视图的高度
 
 @interface LXBreadcrumbView()
 
-@property (nonatomic, weak) UIScrollView *scrollView;
-@property (nonatomic, strong) NSMutableArray *btnArray;
 @end
 
 @implementation LXBreadcrumbView
+{
+    UIScrollView        *_scrollView;
+    NSMutableArray      *_btnArray;
+}
 
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
-        UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 44)];
+        UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScrollViewHeight)];
         scrollView.showsHorizontalScrollIndicator = NO;
         [self addSubview:scrollView];
         _scrollView = scrollView;
@@ -79,7 +82,6 @@
     
     CGFloat scrollViewWidth = _scrollView.frame.size.width;
     CGFloat contentSizeWidth = _scrollView.contentSize.width;
-    
     if (contentSizeWidth > scrollViewWidth) {
         _scrollView.contentOffset = CGPointMake(contentSizeWidth - scrollViewWidth, 0);
     }

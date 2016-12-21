@@ -11,7 +11,6 @@
 @interface ViewController : UIViewController
 
 @property (nonatomic, strong) NSString *titleStr;
-@property (nonatomic, strong) NSMutableArray *crumbList;
 
 @end
 

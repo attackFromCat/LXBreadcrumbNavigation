@@ -12,13 +12,15 @@
 static NSString *const reuseID = @"cell";
 
 @interface ViewController () <UITableViewDelegate,UITableViewDataSource>
-{
-    
-    LXBreadcrumbView *_crumView;
-}
+
+@property (nonatomic, strong) NSMutableArray *crumbList;
+
 @end
 
 @implementation ViewController
+{
+    LXBreadcrumbView *_crumView;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
